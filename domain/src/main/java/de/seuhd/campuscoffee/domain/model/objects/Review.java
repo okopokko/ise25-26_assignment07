@@ -4,6 +4,8 @@ import lombok.Builder;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
+import java.time.LocalDateTime;
+
 /**
  * Domain record that stores a review for a point of sale.
  * Reviews are approved once they received a configurable number of approvals.
@@ -12,6 +14,11 @@ import org.jspecify.annotations.Nullable;
 public record Review(
         @Nullable Long id, // null when the review has not been created yet
         //TODO: Implement review domain model.
+        @Nullable LocalDateTime createdAt,
+        @Nullable LocalDateTime updatedAt,
+        @NonNull Long posID,
+        @NonNull Long authorID,
+        @NonNull String reviewDesc,
         @NonNull Integer approvalCount, // is updated by the domain module
         @NonNull Boolean approved // is determined by the domain module
 ) implements DomainModel<Long> {
