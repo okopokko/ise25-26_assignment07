@@ -1,6 +1,5 @@
 package de.seuhd.campuscoffee.api.controller;
 
-import de.seuhd.campuscoffee.api.dtos.PosDto;
 import de.seuhd.campuscoffee.api.dtos.ReviewDto;
 import de.seuhd.campuscoffee.api.mapper.DtoMapper;
 import de.seuhd.campuscoffee.api.mapper.ReviewDtoMapper;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import static de.seuhd.campuscoffee.api.openapi.Operation.*;
-import static de.seuhd.campuscoffee.api.openapi.Resource.POS;
 import static de.seuhd.campuscoffee.api.openapi.Resource.REVIEW;
 
 /**
@@ -111,7 +109,9 @@ public class ReviewController extends CrudController<Review, ReviewDto, Long> {
         return ResponseEntity.ok(filteredReviewDtos);
     }
 
-    @PutMapping("/approve")
+    @Operation
+    @CrudOperation(operation=UPDATE, resource=REVIEW)
+    @GetMapping("/{id}/approve")
     public ResponseEntity<ReviewDto> approve(
             @Parameter(description="Unique identifier of the review to approve.")
             @PathVariable Long id,

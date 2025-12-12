@@ -16,9 +16,9 @@ public record Review(
         //TODO: Implement review domain model.
         @Nullable LocalDateTime createdAt,
         @Nullable LocalDateTime updatedAt,
-        @NonNull Long posID,
-        @NonNull Long authorID,
-        @NonNull String reviewDesc,
+        @NonNull Pos pos,
+        @NonNull User author,
+        @NonNull String review,
         @NonNull Integer approvalCount, // is updated by the domain module
         @NonNull Boolean approved // is determined by the domain module
 ) implements DomainModel<Long> {

@@ -17,16 +17,13 @@ public record ReviewDto (
     @Nullable LocalDateTime createdAt,
     @Nullable LocalDateTime updatedAt,
 
-    @NotNull
-    @NonNull Long posID,
+    @NonNull Long posId,
 
-    @NotNull
-    @NonNull Long authorID,
+    @NonNull Long authorId,
 
     @NotBlank(message = "Review description cannot be empty.")
-    @NonNull String reviewDesc,
+    @NonNull String review,
 
-    @NotNull
     @NonNull Boolean approved
 ) implements Dto<Long> {
     @Override
